@@ -52,7 +52,7 @@ export const ArA = styled.a`
   text-overflow: ellipsis;
   user-select: none;
   white-space: nowrap;
-  background: #166b9b;
+  background: #88619a;
   border-color: transparent;
   border-radius: 2rem;
   color: #ffffff;
@@ -166,7 +166,6 @@ export const RowLiBut = styled.button`
   min-width: auto;
   overflow: visible;
   padding: 0.5rem;
-  background-color: #166b9b;
   border-radius: 0.5rem;
   color: #fff;
   cursor: pointer;
@@ -180,10 +179,9 @@ export const RowLiBut = styled.button`
     transform 150ms cubic-bezier(0.32, 0.94, 0.6, 1);
   user-select: none;
   white-space: nowrap;
-  background: #166b9b;
   border-color: transparent;
   opacity: 1;
-  background: ${(props) => (props.isActive ? "#000" : "#166b9b")};
+  background: ${(props) => (props.isActive ? "#000" : "#88619a")};
 `;
 export const ColConFCon = styled.div`
   display: flex;
@@ -225,7 +223,7 @@ export const ColAudSubBut = styled.button`
   text-overflow: ellipsis;
   user-select: none;
   white-space: nowrap;
-  background: #166b9b;
+  background: #88619a;
   border-color: transparent;
   color: #ffffff;
   opacity: 1;
@@ -351,7 +349,7 @@ export const KmSubCon = styled.div`
   display: block;
   position: absolute;
   transition: transform 100ms ease-out;
-  background-color: #166b9b;
+  background-color: #88619a;
   height: 0.5rem;
   right: 100%;
   transform: translate(50%) scale(1);

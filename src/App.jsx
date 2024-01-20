@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp";
 import Something from "./pages/Something";
 import Policy from "./pages/Policy";
 import Personal from "./pages/personal";
+import Outcome from "./pages/Outcome";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/personality" element={<Personal />} />
+        <Route path="/outcome" element={<Outcome />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/product/:category" element={<Product />} />
         <Route path="/main" element={<Something />} />

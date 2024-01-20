@@ -58,6 +58,7 @@ import extraHighScoreSVG from "../../assets/character2.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/userRedux";
+import { setQuizResults } from "../../redux/quizSlice";
 
 const Personality = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -183,15 +184,6 @@ const Personality = () => {
     }
   };
 
-  useEffect(() => {
-    if (currentQuestion < questionRefs.current.length) {
-      questionRefs.current[currentQuestion].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [currentQuestion]);
-
   const navigate = useNavigate();
 
   const handleNextPage = () => {
@@ -217,15 +209,6 @@ const Personality = () => {
 
   const scoreDetails = getScoreDetails();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const scoreOptions =
     screenWidth > 768
       ? [
@@ -248,6 +231,37 @@ const Personality = () => {
           { size: "30px", borderColor: "#33a474" },
         ];
 
+  const handleAnswerSelect = (questionIndex, selectedScore) => {
+    let newAnswers = [...answers];
+    newAnswers[questionIndex] = selectedScore;
+    setAnswers(newAnswers);
+
+    // Proceed to next question or end of current statement set
+    if (questionIndex < currentStatements.length - 1) {
+      setCurrentQuestion(questionIndex + 1);
+    } else {
+      setCurrentQuestion(currentQuestion + 1); // This will trigger the useEffect
+    }
+  };
+
+  useEffect(() => {
+    if (currentQuestion < questionRefs.current.length) {
+      questionRefs.current[currentQuestion].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [currentQuestion]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     if (currentQuestion >= currentStatements.length) {
       if (currentStatements === statements) {
@@ -266,18 +280,13 @@ const Personality = () => {
     }
   }, [currentQuestion, currentStatements]);
 
-  const handleAnswerSelect = (questionIndex, selectedScore) => {
-    let newAnswers = [...answers];
-    newAnswers[questionIndex] = selectedScore;
-    setAnswers(newAnswers);
-
-    // Proceed to next question or end of current statement set
-    if (questionIndex < currentStatements.length - 1) {
-      setCurrentQuestion(questionIndex + 1);
-    } else {
-      setCurrentQuestion(currentQuestion + 1); // This will trigger the useEffect
+  useEffect(() => {
+    if (showScore) {
+      const totalScore = calculateTotalScore();
+      const scoreDetails = getScoreDetails(totalScore); // assuming getScoreDetails uses totalScore
+      dispatch(setQuizResults({ totalScore, scoreDetails }));
     }
-  };
+  }, [showScore, dispatch]);
 
   return (
     <>

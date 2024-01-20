@@ -11,6 +11,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import quizReducer from "./quizSlice";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
@@ -19,7 +20,11 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ user: userReducer, cart: cartReducer });
+const rootReducer = combineReducers({
+  user: userReducer,
+  cart: cartReducer,
+  quiz: quizReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
