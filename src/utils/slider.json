@@ -1,0 +1,38 @@
+[
+  {
+    "name": "تمريض",
+    "subName": "nurse",
+    "price": "49",
+    "image": "./r3.png"
+  },
+  {
+    "name": "الاطباء",
+    "subName": "physician",
+    "price": "49",
+    "image": "../../assets/Whispers in the Rails.jpg"
+  },
+  {
+    "name": "اسنان",
+    "subName": "dentist",
+    "price": "49",
+    "image": "./r2.png"
+  },
+  {
+    "name": "استقبال",
+    "subName": "reception",
+    "price": "49",
+    "image": "./r2.png"
+  },
+  {
+    "name": "فني",
+    "subName": "technician",
+    "price": "49",
+    "image": "./r3.png"
+  },
+  {
+    "name": "ادارة",
+    "subName": "management",
+    "price": "49",
+    "image": "./r2.png"
+  }
+]
