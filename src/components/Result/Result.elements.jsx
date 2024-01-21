@@ -184,7 +184,7 @@ export const ProTop = styled.div`
   font-weight: 600;
   text-transform: none;
   color: #787f8d;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 
   @media screen and (max-width: 768px) {
@@ -276,7 +276,7 @@ export const ProBottm = styled.div`
   font-weight: 600;
   text-transform: none;
   color: #787f8d;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 
   @media screen and (max-width: 768px) {

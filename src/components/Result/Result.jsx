@@ -6,8 +6,6 @@ import {
   ProFe,
   ProIn,
   ProMiddle,
-  ProNo,
-  ProNone,
   ProOn,
   ProRe,
   ProTop,
@@ -32,7 +30,6 @@ import {
   TraSp6,
   TraSubCon,
   TraThr,
-  TraTwo,
 } from "./Result.elements";
 import {
   ProgressCal,
@@ -64,6 +61,8 @@ const TraitComponent = ({
   traitPercentage,
   proTopText,
   backgroundColor,
+  kindLeft,
+  kindRight,
 }) => {
   const percentageValue = parseInt(traitPercentage, 10);
   const leftPosition = `${percentageValue}%`;
@@ -106,7 +105,7 @@ const TraitComponent = ({
             </ProOn>
           </ProIn>
         </ProMiddle>
-        <ProBottm>Introverted</ProBottm>
+        <ProBottm>{kindRight}</ProBottm>
       </ProCon>
     </TraOne>
   );
@@ -117,7 +116,6 @@ const Result = () => {
   const [resultPage, setResultPage] = useState(0);
   const [type, setType] = useState("");
   const { results, resultContent } = useSelector(selectQuizResults); // Destructure to get resultContent
-  const [proTopText, setProTopText] = useState("Extraverted");
 
   if (!quizResults) {
     return <div>Loading results...</div>;
@@ -205,32 +203,37 @@ const Result = () => {
                     <TraitComponent
                       traitName="Energy"
                       traitPercentage="19%"
-                      proTopText={proTopText}
-                      backgroundColor="#4298b4" // First TraitComponent background color
+                      proTopText="Extraverted"
+                      backgroundColor="#4298b4"
+                      kindRight="Introverted"
                     />
                     <TraitComponent
-                      traitName="Energy"
+                      traitName="Mind"
                       traitPercentage="89%"
-                      proTopText={proTopText}
-                      backgroundColor="#e4ae3a" // Second TraitComponent background color
+                      proTopText="Intuitive"
+                      backgroundColor="#e4ae3a"
+                      kindRight="Observant"
                     />
                     <TraitComponent
-                      traitName="Energy"
+                      traitName="Nature"
                       traitPercentage="29%"
-                      proTopText={proTopText}
-                      backgroundColor="#32a474" // Third TraitComponent background color
+                      proTopText="Thinking"
+                      backgroundColor="#32a474"
+                      kindRight="Feeling"
                     />
                     <TraitComponent
-                      traitName="Energy"
+                      traitName="Tactics"
                       traitPercentage="79%"
-                      proTopText={proTopText}
-                      backgroundColor="#886199" // Third TraitComponent background color
+                      proTopText="Judging"
+                      backgroundColor="#886199"
+                      kindRight="Prospecting"
                     />
                     <TraitComponent
-                      traitName="Energy"
+                      traitName="Identity"
                       traitPercentage="59%"
-                      proTopText={proTopText}
-                      backgroundColor="#f25e62" // Third TraitComponent background color
+                      proTopText="Assertive"
+                      backgroundColor="#f25e62"
+                      kindRight="Turbulent"
                     />
 
                     <TraThr></TraThr>
