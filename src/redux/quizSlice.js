@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const quizSlice = createSlice({
   name: "quiz",
   initialState: {
-    results: null,
+    part1Results: null,
+    part2Results: null,
+    part3Results: null,
   },
   reducers: {
     setQuizResults: (state, action) => {

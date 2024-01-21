@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavTech, Result } from "../components";
+import { Footer, NavTech, Result } from "../components";
 
 const Outcome = () => {
   useEffect(() => {
@@ -9,6 +9,7 @@ const Outcome = () => {
     <>
       <NavTech />
       <Result />
+      <Footer />
     </>
   );
 };

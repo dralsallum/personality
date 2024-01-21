@@ -71,6 +71,7 @@ const Personality = () => {
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
+  const [currentPart, setCurrentPart] = useState(1);
 
   const calculateTotalScore = () => {
     return answers.reduce((total, answer, index) => {
@@ -191,7 +192,7 @@ const Personality = () => {
       setResultPage((prevPage) => prevPage + 1);
     } else {
       // Redirect the user to a different page, for example, '/results'
-      navigate("/");
+      navigate("/outcome");
     }
   };
 
@@ -245,48 +246,44 @@ const Personality = () => {
   };
 
   useEffect(() => {
+    // Scrolling to the current question
     if (currentQuestion < questionRefs.current.length) {
       questionRefs.current[currentQuestion].scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
     }
-  }, [currentQuestion]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
+    // Handling window resize
+    const handleResize = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [currentQuestion]);
 
   useEffect(() => {
     if (currentQuestion >= currentStatements.length) {
       if (currentStatements === statements) {
-        setCurrentStatements(statements2); // Switch to statements2
-        setAnswers(Array(statements2.length).fill(0)); // Reset answers for statements2
-        setCurrentQuestion(0); // Reset to the first question of statements2
+        setCurrentStatements(statements2);
+        setAnswers(Array(statements2.length).fill(0));
+        setCurrentQuestion(0);
       } else if (currentStatements === statements2) {
-        setCurrentStatements(statements3); // Switch to statements3
-        setAnswers(Array(statements3.length).fill(0)); // Reset answers for statements3
-        setCurrentQuestion(0); // Reset to the first question of statements3
+        setCurrentStatements(statements3);
+        setAnswers(Array(statements3.length).fill(0));
+        setCurrentQuestion(0);
       } else {
-        // Calculate and show the score after the last set
         setShowScore(true);
         setScore(answers.reduce((total, answer) => total + answer, 0));
       }
     }
-  }, [currentQuestion, currentStatements]);
 
-  useEffect(() => {
+    // Calculate and dispatch score after the quiz completion
     if (showScore) {
       const totalScore = calculateTotalScore();
-      const scoreDetails = getScoreDetails(totalScore); // assuming getScoreDetails uses totalScore
+      const scoreDetails = getScoreDetails(totalScore);
       dispatch(setQuizResults({ totalScore, scoreDetails }));
     }
-  }, [showScore, dispatch]);
+  }, [currentQuestion, currentStatements, showScore]);
 
   return (
     <>

@@ -59,12 +59,65 @@ import { selectQuizResults } from "../../redux/quizSlice";
 import { useSelector } from "react-redux";
 import statements from "../../utils/statements";
 
+const TraitComponent = ({
+  traitName,
+  traitPercentage,
+  proTopText,
+  backgroundColor,
+}) => {
+  const percentageValue = parseInt(traitPercentage, 10);
+  const leftPosition = `${percentageValue}%`;
+  return (
+    <TraOne>
+      <TraOnCon>
+        <TraSp1>{traitName}:</TraSp1>
+        <TraSp2>
+          <TraSp3>{traitPercentage}</TraSp3>
+        </TraSp2>
+        <TraSp4>
+          <TraSp5>
+            <TraBut>
+              <TraSp6>
+                <svg
+                  aria-labelledby="i_ig6y79sie9"
+                  viewBox="0 0 48 48"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title id="i_ig6y79sie9">Help</title>
+                  <path
+                    d="M24.938 0C17.456 0 12.608 3.066 8.802 8.531a2.25 2.25 0 0 0 .488 3.085l4.04 3.065c.975.74 2.353.563 3.122-.384 2.344-2.944 4.088-4.631 7.763-4.631 2.887 0 6.45 1.856 6.45 4.65 0 2.118-1.744 3.196-4.594 4.8-3.319 1.865-7.716 4.18-7.716 9.975v.918a2.245 2.245 0 0 0 2.25 2.25h6.797a2.245 2.245 0 0 0 2.25-2.25v-.543c0-4.022 11.747-4.182 11.747-15.057C41.39 6.216 32.897 0 24.938 0zM24 35.016a6.506 6.506 0 0 0-6.497 6.497A6.506 6.506 0 0 0 24 48.009a6.506 6.506 0 0 0 6.497-6.496A6.506 6.506 0 0 0 24 35.016z"
+                    fillRule="evenodd"
+                  ></path>
+                </svg>
+              </TraSp6>
+            </TraBut>
+          </TraSp5>
+        </TraSp4>
+      </TraOnCon>
+      <ProCon>
+        <ProTop>{proTopText}</ProTop>
+        <ProMiddle>
+          <ProIn>
+            <ProOn>
+              <ProRe style={{ backgroundColor: backgroundColor }}>
+                <ProFe style={{ left: leftPosition }}></ProFe>
+              </ProRe>
+            </ProOn>
+          </ProIn>
+        </ProMiddle>
+        <ProBottm>Introverted</ProBottm>
+      </ProCon>
+    </TraOne>
+  );
+};
+
 const Result = () => {
   const quizResults = useSelector(selectQuizResults);
   const [resultPage, setResultPage] = useState(0);
   const [type, setType] = useState("");
   const { results, resultContent } = useSelector(selectQuizResults); // Destructure to get resultContent
-  const progress = 59;
+  const [proTopText, setProTopText] = useState("Extraverted");
 
   if (!quizResults) {
     return <div>Loading results...</div>;
@@ -149,94 +202,37 @@ const Result = () => {
                 <TraInfo>
                   <TraHe>Your Traits</TraHe>
                   <TraMid>
-                    <TraOne>
-                      <TraOnCon>
-                        <TraSp1>Energy:</TraSp1>
-                        <TraSp2>
-                          <TraSp3> 59% </TraSp3>
-                        </TraSp2>
-                        <TraSp4>
-                          <TraSp5>
-                            <TraBut>
-                              <TraSp6>
-                                <svg
-                                  aria-labelledby="i_ig6y79sie9"
-                                  viewBox="0 0 48 48"
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title id="i_ig6y79sie9">Help</title>{" "}
-                                  <path
-                                    d="M24.938 0C17.456 0 12.608 3.066 8.802 8.531a2.25 2.25 0 0 0 .488 3.085l4.04 3.065c.975.74 2.353.563 3.122-.384 2.344-2.944 4.088-4.631 7.763-4.631 2.887 0 6.45 1.856 6.45 4.65 0 2.118-1.744 3.196-4.594 4.8-3.319 1.865-7.716 4.18-7.716 9.975v.918a2.245 2.245 0 0 0 2.25 2.25h6.797a2.245 2.245 0 0 0 2.25-2.25v-.543c0-4.022 11.747-4.182 11.747-15.057C41.39 6.216 32.897 0 24.938 0zM24 35.016a6.506 6.506 0 0 0-6.497 6.497A6.506 6.506 0 0 0 24 48.009a6.506 6.506 0 0 0 6.497-6.496A6.506 6.506 0 0 0 24 35.016z"
-                                    fill-rule="evenodd"
-                                  ></path>
-                                </svg>
-                              </TraSp6>
-                            </TraBut>
-                          </TraSp5>
-                        </TraSp4>
-                      </TraOnCon>
-                      <ProCon>
-                        <ProTop>Extraverted</ProTop>
-                        <ProMiddle>
-                          <ProIn>
-                            <ProOn>
-                              <ProRe>
-                                <ProFe></ProFe>
-                              </ProRe>
-                            </ProOn>
-                          </ProIn>
-                        </ProMiddle>
-                        <ProBottm>Introverted</ProBottm>
-                      </ProCon>
-                    </TraOne>
-                    <TraTwo>
-                      <TraOnCon>
-                        <TraSp1>Energy:</TraSp1>
-                        <TraSp2>
-                          <TraSp3> 59% </TraSp3>Introverted
-                        </TraSp2>
-                        <TraSp4>
-                          <TraSp5>
-                            <TraBut>
-                              <TraSp6>
-                                <svg
-                                  aria-labelledby="i_ig6y79sie9"
-                                  viewBox="0 0 48 48"
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title id="i_ig6y79sie9">Help</title>{" "}
-                                  <path
-                                    d="M24.938 0C17.456 0 12.608 3.066 8.802 8.531a2.25 2.25 0 0 0 .488 3.085l4.04 3.065c.975.74 2.353.563 3.122-.384 2.344-2.944 4.088-4.631 7.763-4.631 2.887 0 6.45 1.856 6.45 4.65 0 2.118-1.744 3.196-4.594 4.8-3.319 1.865-7.716 4.18-7.716 9.975v.918a2.245 2.245 0 0 0 2.25 2.25h6.797a2.245 2.245 0 0 0 2.25-2.25v-.543c0-4.022 11.747-4.182 11.747-15.057C41.39 6.216 32.897 0 24.938 0zM24 35.016a6.506 6.506 0 0 0-6.497 6.497A6.506 6.506 0 0 0 24 48.009a6.506 6.506 0 0 0 6.497-6.496A6.506 6.506 0 0 0 24 35.016z"
-                                    fill-rule="evenodd"
-                                  ></path>
-                                </svg>
-                              </TraSp6>
-                            </TraBut>
-                          </TraSp5>
-                        </TraSp4>
-                      </TraOnCon>
-                      <ProCon>
-                        <ProTop>Extraverted</ProTop>
-                        <ProMiddle>
-                          <ProNo>
-                            <ProNone></ProNone>
-                          </ProNo>
-                          <ProIn>
-                            <ProOn>
-                              <ProRe
-                                backgroundColor="#eeeff1"
-                                progress={progress}
-                              >
-                                <ProFe></ProFe>
-                              </ProRe>
-                            </ProOn>
-                          </ProIn>
-                        </ProMiddle>
-                        <ProBottm>Introverted</ProBottm>
-                      </ProCon>
-                    </TraTwo>
+                    <TraitComponent
+                      traitName="Energy"
+                      traitPercentage="19%"
+                      proTopText={proTopText}
+                      backgroundColor="#4298b4" // First TraitComponent background color
+                    />
+                    <TraitComponent
+                      traitName="Energy"
+                      traitPercentage="89%"
+                      proTopText={proTopText}
+                      backgroundColor="#e4ae3a" // Second TraitComponent background color
+                    />
+                    <TraitComponent
+                      traitName="Energy"
+                      traitPercentage="29%"
+                      proTopText={proTopText}
+                      backgroundColor="#32a474" // Third TraitComponent background color
+                    />
+                    <TraitComponent
+                      traitName="Energy"
+                      traitPercentage="79%"
+                      proTopText={proTopText}
+                      backgroundColor="#886199" // Third TraitComponent background color
+                    />
+                    <TraitComponent
+                      traitName="Energy"
+                      traitPercentage="59%"
+                      proTopText={proTopText}
+                      backgroundColor="#f25e62" // Third TraitComponent background color
+                    />
+
                     <TraThr></TraThr>
                   </TraMid>
                 </TraInfo>
