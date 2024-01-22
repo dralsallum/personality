@@ -62,11 +62,7 @@ const SignForm = () => {
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         <SignUpForm onSubmit={handleSubmit}>
           <LoginSignSubHeader>اسم المستخدم</LoginSignSubHeader>
-          <LoginSignInput
-            name="username"
-            placeholder="اسم المستخدم"
-            onChange={handleChange}
-          />
+
           <LoginSignSubHeader>ايميل</LoginSignSubHeader>
           <LoginSignInput
             name="email"
@@ -81,12 +77,7 @@ const SignForm = () => {
             onChange={handleChange}
           />
           <LoginSignSubHeader>تاكيد الرقم السري</LoginSignSubHeader>
-          <LoginSignInput
-            type="password"
-            name="confirmPassword"
-            placeholder="تاكيد الباسورد"
-            onChange={handleChange}
-          />
+
           <SignButton>تسجيل حساب جديد</SignButton>
         </SignUpForm>
         <LoginSignPara>

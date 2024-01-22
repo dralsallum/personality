@@ -78,9 +78,20 @@ const Personality = () => {
   const [resultPage, setResultPage] = useState(0);
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState("");
-  const [currentPart, setCurrentPart] = useState(1);
+
   const navigate = useNavigate();
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    // Dispatch the register action
+    dispatch(
+      register({
+        username: inputs.username,
+        email: inputs.email,
+        password: inputs.password,
+      })
+    );
+  };
 
   const calculateTotalScore = () => {
     return answers.reduce((total, answer) => {
@@ -160,10 +171,9 @@ const Personality = () => {
       case 2:
         return (
           <div>
-            <form action="">
+            <form onSubmit={handleSignUp}>
               <LoginSignSubHeader>
-                زودنا ببريدك الالكتروني لصنع حساب لك وسنرسل لك نتائجك المفصلة
-                على ايميلك
+                زودنا بمعلوماتك لإنشاء حساب وسنرسل لك نتائجك المفصلة على ايميلك
               </LoginSignSubHeader>
               <LoginSignInput
                 name="email"
@@ -173,10 +183,10 @@ const Personality = () => {
               <LoginSignInput
                 type="password"
                 name="password"
-                placeholder="باسورد"
+                placeholder="كلمة السر"
                 onChange={handleChange}
               />
-              <RegistarButton type="submit">تسجيل حساب جديد</RegistarButton>
+              <RegistarButton type="submit">إنشاء حساب</RegistarButton>
             </form>
           </div>
         );
