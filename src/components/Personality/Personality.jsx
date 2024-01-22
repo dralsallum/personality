@@ -76,22 +76,11 @@ const Personality = () => {
   const [currentStatements, setCurrentStatements] = useState(statements);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [resultPage, setResultPage] = useState(0);
+  const [registrationError, setRegistrationError] = useState("");
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    // Dispatch the register action
-    dispatch(
-      register({
-        username: inputs.username,
-        email: inputs.email,
-        password: inputs.password,
-      })
-    );
-  };
 
   const calculateTotalScore = () => {
     return answers.reduce((total, answer) => {
@@ -309,6 +298,32 @@ const Personality = () => {
     }
   };
 
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    if (!inputs.email) {
+      setRegistrationError("Please provide an email address.");
+      return;
+    }
+    try {
+      // Dispatch the register action and wait for a response
+      const response = await dispatch(
+        register({
+          email: inputs.email,
+          password: inputs.password,
+        })
+      ).unwrap();
+
+      // Navigate to '/outcome' on successful registration
+      if (response.success) {
+        navigate("/outcome");
+      }
+    } catch (error) {
+      setRegistrationError(
+        error.message || "An error occurred during registration."
+      );
+    }
+  };
+
   useEffect(() => {
     // Scrolling to the current question
     if (currentQuestion < questionRefs.current.length) {
@@ -461,7 +476,7 @@ const Personality = () => {
                 <QuizFieldset
                   key={statement.id}
                   ref={addToRefs}
-                  current={index === currentQuestion}
+                  $current={index === currentQuestion}
                 >
                   <FieldDiv>
                     <QueSpa>{statement.text}</QueSpa>
@@ -472,7 +487,7 @@ const Personality = () => {
                       {scoreOptions.map((option, optionIndex) => (
                         <ScoreSectionbackground
                           key={optionIndex}
-                          borderColor={option.borderColor}
+                          $borderColor={option.borderColor}
                         >
                           <QuestionSection>
                             <QuestionCount
@@ -485,8 +500,8 @@ const Personality = () => {
                             />
                             <QuestionCountSpan
                               size={option.size}
-                              borderColor={option.borderColor}
-                              selected={answers[index] === optionIndex + 1}
+                              $borderColor={option.borderColor}
+                              $selected={answers[index] === optionIndex + 1}
                             ></QuestionCountSpan>
                           </QuestionSection>
                         </ScoreSectionbackground>

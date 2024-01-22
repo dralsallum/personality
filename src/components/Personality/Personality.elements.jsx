@@ -152,7 +152,7 @@ export const QuizCon = styled.div`
 export const QuizFieldset = styled.fieldset`
   margin: 25px 0 0;
   border: none;
-  opacity: ${(props) => (props.current ? 1 : 0.5)};
+  opacity: ${(props) => (props.$current ? 1 : 0.5)};
   min-width: 0;
   max-width: none;
   padding-bottom: 20px;
@@ -271,8 +271,9 @@ export const QuestionCountSpan = styled.span`
   align-items: center;
   border-radius: 50%;
   box-shadow: inset 0 1px rgba(81, 89, 106, 0.05);
-  border: 1px solid ${(props) => props.borderColor || "#33a474"};
-  background-color: ${(props) => (props.selected ? props.borderColor : "#fff")};
+  border: 1px solid ${(props) => props.$borderColor || "#33a474"};
+  background-color: ${(props) =>
+    props.$selected ? props.$borderColor : "#fff"};
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 
