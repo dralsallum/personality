@@ -51,14 +51,22 @@ import {
 import statements from "../../utils/statements";
 import statements2 from "../../utils/statements2";
 import statements3 from "../../utils/statements3";
-import lowScoreSVG from "../../assets/character1.png";
-import mediumScoreSVG from "../../assets/character2.png";
-import highScoreSVG from "../../assets/character3.png";
-import extraHighScoreSVG from "../../assets/character2.png";
+import statements4 from "../../utils/statements4";
+import statements5 from "../../utils/statements5";
+import charact1 from "../../assets/character1.png";
+import charact2 from "../../assets/character2.png";
+import charact3 from "../../assets/character3.png";
+import charact4 from "../../assets/character4.png";
+import charact5 from "../../assets/character5.png";
+import charact6 from "../../assets/character6.png";
+import charact7 from "../../assets/character7.png";
+import charact8 from "../../assets/character8.png";
+import charact9 from "../../assets/character9.png";
+import charact10 from "../../assets/character10.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/userRedux";
-import { setQuizResults } from "../../redux/quizSlice";
+import { setQuizResults, setResultText } from "../../redux/quizSlice";
 
 const Personality = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -72,9 +80,10 @@ const Personality = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
   const [currentPart, setCurrentPart] = useState(1);
+  const navigate = useNavigate();
 
   const calculateTotalScore = () => {
-    return answers.reduce((total, answer, index) => {
+    return answers.reduce((total, answer) => {
       const questionScore = answer;
       return total + questionScore;
     }, 0);
@@ -82,32 +91,69 @@ const Personality = () => {
 
   const renderResultContent = () => {
     const scoreDetails = getScoreDetails();
-    const motivationQuotes = {
-      low: "Quote for low score",
-      medium: "Quote for medium score",
-      high: "Quote for high score",
-      extraHigh: "Quote for extra high score",
+
+    const quotesAndSpells = {
+      range1: {
+        quote: "Quote for range 1",
+        spell: "Spell for range 1",
+      },
+      range2: {
+        quote: "Quote for range 2",
+        spell: "Spell for range 2",
+      },
+      range3: {
+        quote: "Quote for range 3",
+        spell: "Spell for range 3",
+      },
+      range4: {
+        quote: "Quote for range 4",
+        spell: "Spell for range 4",
+      },
+      range5: {
+        quote: "Quote for range 5",
+        spell: "Spell for range 5",
+      },
+      range6: {
+        quote: "Quote for range 6",
+        spell: "Spell for range 6",
+      },
+      range7: {
+        quote: "Quote for range 7",
+        spell: "Spell for range 7",
+      },
+      range8: {
+        quote: "Quote for range 8",
+        spell: "Spell for range 8",
+      },
+      range9: {
+        quote: "Quote for range 9",
+        spell: "Spell for range 9",
+      },
+      range10: {
+        quote: "Quote for range 10",
+        spell: "Spell for range 10",
+      },
     };
 
-    const spellQuotes = {
-      low: "Spell for low score",
-      medium: "Spell for medium score",
-      high: "Spell for high score",
-      extraHigh: "Spell for extra high score",
+    const currentContent = quotesAndSpells[scoreDetails.category] || {
+      quote: "Default quote if score doesn't match any range",
+      spell: "Default spell if score doesn't match any range",
     };
+
+    dispatch(setResultText(currentContent));
 
     switch (resultPage) {
       case 0:
         return (
           <div>
-            <p>{motivationQuotes[scoreDetails.category]}</p>
+            <p>{currentContent.quote}</p>
             <p>Your email: user@example.com</p>
           </div>
         );
       case 1:
         return (
           <div>
-            <p>{spellQuotes[scoreDetails.category]}</p>
+            <p>{currentContent.spell}</p>
             <p>Your email: user@example.com</p>
           </div>
         );
@@ -142,24 +188,34 @@ const Personality = () => {
   const getScoreDetails = () => {
     const totalScore = calculateTotalScore();
     const maxScorePerQuestion = 7;
-    const maxTotalScore = statements.length * maxScorePerQuestion;
+    const maxTotalScore = currentStatements.length * maxScorePerQuestion;
     let scoreDetails = {
       svg: null,
       category: "",
     };
 
-    if (totalScore <= maxTotalScore / 4) {
-      scoreDetails.svg = lowScoreSVG;
-      scoreDetails.category = "low";
-    } else if (totalScore <= maxTotalScore / 2) {
-      scoreDetails.svg = mediumScoreSVG;
-      scoreDetails.category = "medium";
-    } else if (totalScore <= maxTotalScore) {
-      scoreDetails.svg = highScoreSVG;
-      scoreDetails.category = "high";
+    const scoreRanges = [
+      { limit: maxTotalScore / 10, svg: charact1, category: "range1" },
+      { limit: (maxTotalScore * 2) / 10, svg: charact2, category: "range2" },
+      { limit: (maxTotalScore * 3) / 10, svg: charact3, category: "range3" },
+      { limit: (maxTotalScore * 4) / 10, svg: charact4, category: "range4" },
+      { limit: (maxTotalScore * 5) / 10, svg: charact5, category: "range5" },
+      { limit: (maxTotalScore * 6) / 10, svg: charact6, category: "range6" },
+      { limit: (maxTotalScore * 7) / 10, svg: charact7, category: "range7" },
+      { limit: (maxTotalScore * 8) / 10, svg: charact8, category: "range8" },
+      { limit: (maxTotalScore * 9) / 10, svg: charact9, category: "range9" },
+      { limit: maxTotalScore, svg: charact10, category: "range10" },
+    ];
+
+    // Find the appropriate score range
+    const matchedRange = scoreRanges.find((range) => totalScore <= range.limit);
+    if (matchedRange) {
+      scoreDetails.svg = matchedRange.svg;
+      scoreDetails.category = matchedRange.category;
     } else {
-      scoreDetails.svg = extraHighScoreSVG;
-      scoreDetails.category = "extraHigh";
+      // Handle the case where the score is above the maximum expected score
+      scoreDetails.svg = charact10; // replace with an actual image reference
+      scoreDetails.category = "aboveRange";
     }
 
     return scoreDetails;
@@ -184,8 +240,6 @@ const Personality = () => {
       questionRefs.current.push(el);
     }
   };
-
-  const navigate = useNavigate();
 
   const handleNextPage = () => {
     if (resultPage < 2) {
@@ -261,15 +315,23 @@ const Personality = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [currentQuestion]);
 
+  const statementSets = [
+    statements,
+    statements2,
+    statements3,
+    statements4,
+    statements5,
+  ];
+
   useEffect(() => {
     if (currentQuestion >= currentStatements.length) {
-      if (currentStatements === statements) {
-        setCurrentStatements(statements2);
-        setAnswers(Array(statements2.length).fill(0));
-        setCurrentQuestion(0);
-      } else if (currentStatements === statements2) {
-        setCurrentStatements(statements3);
-        setAnswers(Array(statements3.length).fill(0));
+      const currentSetIndex = statementSets.indexOf(currentStatements);
+      const nextSetIndex = currentSetIndex + 1;
+
+      if (nextSetIndex < statementSets.length) {
+        const nextStatements = statementSets[nextSetIndex];
+        setCurrentStatements(nextStatements);
+        setAnswers(Array(nextStatements.length).fill(0));
         setCurrentQuestion(0);
       } else {
         setShowScore(true);
@@ -283,7 +345,7 @@ const Personality = () => {
       const scoreDetails = getScoreDetails(totalScore);
       dispatch(setQuizResults({ totalScore, scoreDetails }));
     }
-  }, [currentQuestion, currentStatements, showScore]);
+  }, [currentQuestion, currentStatements, showScore, statementSets]);
 
   return (
     <>

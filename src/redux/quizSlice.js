@@ -3,19 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 export const quizSlice = createSlice({
   name: "quiz",
   initialState: {
-    part1Results: null,
-    part2Results: null,
-    part3Results: null,
+    results: null,
+    resultText: "", // Add this line to store result text
   },
   reducers: {
     setQuizResults: (state, action) => {
       state.results = action.payload;
     },
+    setResultText: (state, action) => {
+      state.resultText = action.payload; // Add this reducer to update result text
+    },
   },
 });
 
-export const { setQuizResults } = quizSlice.actions;
+export const { setQuizResults, setResultText } = quizSlice.actions;
 
 export const selectQuizResults = (state) => state.quiz.results;
+export const selectResultText = (state) => state.quiz.resultText; // Selector to access the result text
 
 export default quizSlice.reducer;

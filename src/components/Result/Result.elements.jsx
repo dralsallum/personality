@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ResCon = styled.main`
+  direction: rtl;
   width: 100%;
   display: block;
   margin-top: @media screen and (max-width: 768px) {
@@ -271,7 +272,7 @@ export const ProFe = styled.div`
   }
 `;
 export const ProBottm = styled.div`
-  text-align: right;
+  text-align: left;
   width: 50%;
   font-weight: 600;
   text-transform: none;

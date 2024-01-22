@@ -55,6 +55,7 @@ import {
 import { selectQuizResults } from "../../redux/quizSlice";
 import { useSelector } from "react-redux";
 import statements from "../../utils/statements";
+import { selectResultText } from "../../redux/quizSlice";
 
 const TraitComponent = ({
   traitName,
@@ -116,6 +117,7 @@ const Result = () => {
   const [resultPage, setResultPage] = useState(0);
   const [type, setType] = useState("");
   const { results, resultContent } = useSelector(selectQuizResults); // Destructure to get resultContent
+  const resultText = useSelector(selectResultText);
 
   if (!quizResults) {
     return <div>Loading results...</div>;
@@ -142,10 +144,10 @@ const Result = () => {
       <ResCon>
         <ResHeader>
           <ResTop>
-            <ResHe>Your Results</ResHe>
+            <ResHe>نتائج اختبار الشخصية</ResHe>
             <ResPara>
-              Review your personality test results and learn more about your
-              personality type and core traits.
+              استعرض نتائج اختبار شخصيتك وتعرف أكثر على نوع شخصيتك والسمات
+              الأساسية لها.
             </ResPara>
           </ResTop>
         </ResHeader>
@@ -170,7 +172,7 @@ const Result = () => {
 
                         <ProgressCon></ProgressCon>
                       </ResMid>
-                      <ResBot> {resultContent} </ResBot>
+                      <ResBot> {resultText.quote} </ResBot>
                     </ResAll>
                     <ResOp>
                       <ResRoof>
@@ -198,42 +200,42 @@ const Result = () => {
             <TraSubCon>
               <TraMain>
                 <TraInfo>
-                  <TraHe>Your Traits</TraHe>
+                  <TraHe>صفات شخصيتك</TraHe>
                   <TraMid>
                     <TraitComponent
-                      traitName="Energy"
+                      traitName="طاقة"
                       traitPercentage="19%"
-                      proTopText="Extraverted"
+                      proTopText="اجتماعي"
                       backgroundColor="#4298b4"
-                      kindRight="Introverted"
+                      kindRight="انطواي"
                     />
                     <TraitComponent
-                      traitName="Mind"
+                      traitName="الفكر"
                       traitPercentage="89%"
-                      proTopText="Intuitive"
+                      proTopText="بديهي"
                       backgroundColor="#e4ae3a"
-                      kindRight="Observant"
+                      kindRight="ملاحظ"
                     />
                     <TraitComponent
-                      traitName="Nature"
+                      traitName="طبيعتك"
                       traitPercentage="29%"
-                      proTopText="Thinking"
+                      proTopText="تفكيري"
                       backgroundColor="#32a474"
-                      kindRight="Feeling"
+                      kindRight="شعوري"
                     />
                     <TraitComponent
-                      traitName="Tactics"
+                      traitName="تكتيكاتك"
                       traitPercentage="79%"
-                      proTopText="Judging"
+                      proTopText="حكم"
                       backgroundColor="#886199"
-                      kindRight="Prospecting"
+                      kindRight="استكشاف"
                     />
                     <TraitComponent
-                      traitName="Identity"
+                      traitName="هوية"
                       traitPercentage="59%"
-                      proTopText="Assertive"
+                      proTopText="حازم"
                       backgroundColor="#f25e62"
-                      kindRight="Turbulent"
+                      kindRight="مضطرب"
                     />
 
                     <TraThr></TraThr>
