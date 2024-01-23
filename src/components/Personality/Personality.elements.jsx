@@ -247,7 +247,7 @@ export const ScoreSectionProgress = styled.div`
   justify-content: space-between;
 
   @media screen and (max-width: 768px) {
-    flex: 0 0 238px;
+    flex: 0 0 250px;
   }
 `;
 export const ScoreSectionbackground = styled.span`
