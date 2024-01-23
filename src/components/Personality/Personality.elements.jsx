@@ -588,6 +588,6 @@ export const ResHr = styled.hr`
 export const QueSpa = styled.span`
   font-size: 1.4rem;
   @media screen and (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;
