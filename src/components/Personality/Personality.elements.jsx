@@ -248,6 +248,7 @@ export const ScoreSectionProgress = styled.div`
 
   @media screen and (max-width: 768px) {
     flex: 0 0 250px;
+    margin: 0 20px;
   }
 `;
 export const ScoreSectionbackground = styled.span`
