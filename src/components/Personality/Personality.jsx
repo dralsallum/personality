@@ -63,7 +63,7 @@ import charact7 from "../../assets/character7.png";
 import charact8 from "../../assets/character8.png";
 import charact9 from "../../assets/character9.png";
 import charact10 from "../../assets/character10.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/userRedux";
 import { setQuizResults, setResultText } from "../../redux/quizSlice";
@@ -76,6 +76,7 @@ const Personality = () => {
   const [currentStatements, setCurrentStatements] = useState(statements);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [resultPage, setResultPage] = useState(0);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
@@ -175,7 +176,9 @@ const Personality = () => {
                 placeholder="كلمة السر"
                 onChange={handleChange}
               />
-              <RegistarButton type="submit">إنشاء حساب</RegistarButton>
+              <RegistarButton type="submit" onClick={handleSignUp}>
+                إنشاء حساب
+              </RegistarButton>
             </form>
           </div>
         );
@@ -220,11 +223,6 @@ const Personality = () => {
     return scoreDetails;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(register(inputs));
-  };
-
   const handleChange = (e) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -245,7 +243,7 @@ const Personality = () => {
       setResultPage((prevPage) => prevPage + 1);
     } else {
       // Redirect the user to a different page, for example, '/results'
-      navigate("/outcome");
+      navigate("/signup");
     }
   };
 
@@ -300,28 +298,10 @@ const Personality = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if (!inputs.email) {
-      setRegistrationError("Please provide an email address.");
-      return;
-    }
     try {
-      // Dispatch the register action and wait for a response
-      const response = await dispatch(
-        register({
-          email: inputs.email,
-          password: inputs.password,
-        })
-      ).unwrap();
-
-      // Navigate to '/outcome' on successful registration
-      if (response.success) {
-        navigate("/outcome");
-      }
-    } catch (error) {
-      setRegistrationError(
-        error.message || "An error occurred during registration."
-      );
-    }
+      await dispatch(register(inputs)).unwrap();
+      navigate("/outcome"); // Redirect on successful registration
+    } catch (error) {}
   };
 
   useEffect(() => {

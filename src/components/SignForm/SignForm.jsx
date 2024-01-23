@@ -12,21 +12,18 @@ import {
 } from "./SignForm.elements";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/userRedux";
+import { useNavigate } from "react-router-dom";
 
 const SignForm = () => {
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(register(inputs));
   };
 
   const getArabicErrorMessage = (englishMessage) => {
@@ -38,6 +35,18 @@ const SignForm = () => {
       // ... add other translations as needed
       default:
         return "حدث خطأ غير معروف. يرجى المحاولة مرة أخرى.";
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await dispatch(register(inputs)).unwrap();
+      navigate("/outcome"); // Redirect on successful registration
+    } catch (error) {
+      setErrorMessage(
+        getArabicErrorMessage(error.message || "Registration failed.")
+      );
     }
   };
 
@@ -76,8 +85,6 @@ const SignForm = () => {
             placeholder="الباسورد"
             onChange={handleChange}
           />
-          <LoginSignSubHeader>تاكيد الرقم السري</LoginSignSubHeader>
-
           <SignButton>تسجيل حساب جديد</SignButton>
         </SignUpForm>
         <LoginSignPara>
@@ -85,7 +92,6 @@ const SignForm = () => {
           إشعار الخصوصية الخاص بنا، وإشعار الكوكيز، وإشعار الإعلانات المستندة
           إلى الاهتمامات.
         </LoginSignPara>
-        <RegistarButton type="submit">تسجيل حساب جديد</RegistarButton>
       </LoginContainer>
     </SignContainer>
   );

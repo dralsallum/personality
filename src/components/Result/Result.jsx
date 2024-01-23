@@ -115,8 +115,6 @@ const TraitComponent = ({
 const Result = () => {
   const quizResults = useSelector(selectQuizResults);
   const [resultPage, setResultPage] = useState(0);
-  const [type, setType] = useState("");
-  const { results, resultContent } = useSelector(selectQuizResults); // Destructure to get resultContent
   const resultText = useSelector(selectResultText);
 
   if (!quizResults) {
