@@ -83,12 +83,13 @@ export const OpCon = styled.section`
 `;
 
 export const LoginSignInput = styled.input`
-  padding: 4px;
-  height: 30px;
+  padding: 6px;
+  height: 35px;
   margin-bottom: 8px;
   background-color: white;
   width: 98%;
   border-radius: 8px;
+  font-size: 16px;
 `;
 
 export const LoginSignSubHeader = styled.h5`
