@@ -216,6 +216,10 @@ export const QuizDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    margin: 15px 0 0;
+  }
 `;
 
 export const ScoreSection = styled.div`

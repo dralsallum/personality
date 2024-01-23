@@ -48,7 +48,7 @@ export const MaConTwo = styled.div`
 
   @media screen and (max-width: 768px) {
     max-width: 100%;
-    padding: 45px 50px 0px;
+    padding: 35px 25px 0px;
   }
 `;
 export const MaSubTwo = styled.div`
