@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   LoginContainer,
-  RegistarButton,
   SignButton,
   LoginSignHeader,
   LoginSignInput,
@@ -70,8 +69,6 @@ const SignForm = () => {
         <LoginSignHeader>تسجيل دخول</LoginSignHeader>
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         <SignUpForm onSubmit={handleSubmit}>
-          <LoginSignSubHeader>اسم المستخدم</LoginSignSubHeader>
-
           <LoginSignSubHeader>ايميل</LoginSignSubHeader>
           <LoginSignInput
             name="email"
