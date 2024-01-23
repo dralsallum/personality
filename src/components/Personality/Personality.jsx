@@ -470,7 +470,7 @@ const Personality = () => {
                     <QueSpa>{statement.text}</QueSpa>
                   </FieldDiv>
                   <QuizDiv>
-                    <ScoreSection>لا اتفق</ScoreSection>
+                    <ScoreSection>لااتفق</ScoreSection>
                     <ScoreSectionProgress>
                       {scoreOptions.map((option, optionIndex) => (
                         <ScoreSectionbackground
