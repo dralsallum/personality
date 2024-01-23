@@ -1,4 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const loadingAnimation = keyframes`
+  0% { width: 0%; }
+  100% { width: 100%; }
+`;
+
+export const LoadingBarContainer = styled.div`
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+`;
+
+export const LoadingBar = styled.div`
+  height: 20px;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  animation: ${loadingAnimation} 2s linear infinite;
+`;
 
 export const QuizBody = styled.div`
   direction: rtl;
@@ -15,6 +37,7 @@ export const QuizBody = styled.div`
   @media screen and (max-width: 768px) {
   }
 `;
+
 export const IntroBod = styled.header`
   padding: 25px 30px;
   background-color: #33a474;

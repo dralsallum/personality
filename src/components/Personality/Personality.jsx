@@ -47,7 +47,11 @@ import {
   RegistarButton,
   ProgressCal,
   ProgressCon,
+  StyledSpinner,
+  Loading,
+  LoadingBar,
 } from "./Personality.elements";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import statements from "../../utils/statements";
 import statements2 from "../../utils/statements2";
 import statements3 from "../../utils/statements3";
@@ -76,9 +80,8 @@ const Personality = () => {
   const [currentStatements, setCurrentStatements] = useState(statements);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [resultPage, setResultPage] = useState(0);
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  const [registrationError, setRegistrationError] = useState("");
   const [inputs, setInputs] = useState({});
+  const [isRegistering, setIsRegistering] = useState(false);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -177,7 +180,7 @@ const Personality = () => {
                 onChange={handleChange}
               />
               <RegistarButton type="submit" onClick={handleSignUp}>
-                إنشاء حساب
+                {isRegistering ? <LoadingBar /> : "إنشاء حساب"}
               </RegistarButton>
             </form>
           </div>
@@ -298,10 +301,15 @@ const Personality = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setIsRegistering(true); // Start spinner
     try {
       await dispatch(register(inputs)).unwrap();
       navigate("/outcome"); // Redirect on successful registration
-    } catch (error) {}
+      setIsRegistering(false); // Stop spinner on success
+    } catch (error) {
+      setIsRegistering(false); // Stop spinner on failure
+      // Handle the error (e.g., setRegistrationError)
+    }
   };
 
   useEffect(() => {
