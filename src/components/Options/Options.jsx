@@ -55,11 +55,11 @@ const buttonToSlideIndex = {
 };
 
 const buttonsInfo = [
-  { label: "Meditate", title: "الموظف" },
-  { label: "Sleep", title: "المستشفيات" },
+  { label: "Meditate", title: "الاختبار" },
+  { label: "Sleep", title: "الشخصيات" },
   { label: "Move", title: "الخدمة" },
   { label: "Focus", title: "الاسعار" },
-  { label: "WakeUp", title: "التقديم" },
+  { label: "WakeUp", title: "النمو" },
 ];
 
 const Article = () => {

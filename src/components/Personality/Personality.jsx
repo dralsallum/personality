@@ -278,7 +278,6 @@ const Personality = () => {
       setResultPage((prevPage) => prevPage + 1);
     } else {
       // Redirect the user to a different page, for example, '/results'
-      navigate("/signup");
     }
   };
 
