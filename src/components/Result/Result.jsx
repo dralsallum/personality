@@ -14,6 +14,8 @@ import {
   ResHeader,
   ResPara,
   ResTop,
+  ResuHe,
+  ResuPara,
   TraBut,
   TraCon,
   TraHe,
@@ -32,7 +34,6 @@ import {
   TraThr,
 } from "./Result.elements";
 import {
-  ProgressCal,
   ProgressCon,
   ResAll,
   ResBor,
@@ -54,7 +55,6 @@ import {
 } from "../Personality/Personality.elements";
 import { selectQuizResults } from "../../redux/quizSlice";
 import { useSelector } from "react-redux";
-import statements from "../../utils/statements";
 import { selectResultText } from "../../redux/quizSlice";
 
 const TraitComponent = ({
@@ -62,7 +62,6 @@ const TraitComponent = ({
   traitPercentage,
   proTopText,
   backgroundColor,
-  kindLeft,
   kindRight,
 }) => {
   const percentageValue = parseInt(traitPercentage, 10);
@@ -116,25 +115,40 @@ const Result = () => {
   const quizResults = useSelector(selectQuizResults);
   const [resultPage, setResultPage] = useState(0);
   const resultText = useSelector(selectResultText);
+  const { quote, spell, team } = resultText;
 
-  if (!quizResults) {
+  const scoreDetails = quizResults ? quizResults.scoreDetails : null;
+
+  if (!resultText) {
     return <div>Loading results...</div>;
   }
-  const { totalScore, scoreDetails } = quizResults;
-  const maxTotalScore = statements.length * 7;
+
+  const renderPageContent = () => {
+    switch (resultPage) {
+      case 0:
+        return <ResuPara>{quote}</ResuPara>;
+      case 1:
+        return <ResuPara>{spell}</ResuPara>;
+      case 2:
+        return (
+          <div>
+            {/* Replace with actual share buttons */}
+            <button>Share on Facebook</button>
+            <button>Share on Twitter</button>
+            {/* Add more share buttons as needed */}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   const handleNextPage = () => {
     if (resultPage < 2) {
       setResultPage((prevPage) => prevPage + 1);
     } else {
-      // Redirect the user to a different page, for example, '/results'
+      // Redirect or do something else when the last page is reached
     }
-  };
-
-  const renderResultContent = () => {
-    // Example implementation, adjust based on your requirements
-    const content = "Your result content here based on scoreDetails"; // Modify this line as needed
-    return <div>{content}</div>;
   };
 
   return (
@@ -157,20 +171,18 @@ const Result = () => {
                 <ResCar>
                   <ResFie>
                     <ResAll>
-                      <ResTop></ResTop>
                       <ResTit>نوع شخصيتك هو</ResTit>
-                      <ResSubTit>{scoreDetails.personalityType}</ResSubTit>
+                      <ResSubTit></ResSubTit>
                       <ResTyCon>
                         <ResTySp></ResTySp>
-                        اي تي م - الف
+                        <ResuHe>{team}</ResuHe>
                       </ResTyCon>
                       <ResMid>
                         <ResImg src={scoreDetails.svg} alt="score indicator" />
                         <br />
-
                         <ProgressCon></ProgressCon>
                       </ResMid>
-                      <ResBot> {resultText.quote} </ResBot>
+                      <ResBot>{renderPageContent()}</ResBot>
                     </ResAll>
                     <ResOp>
                       <ResRoof>

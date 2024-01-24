@@ -51,6 +51,7 @@ import {
   Loading,
   LoadingBar,
   QuizHe,
+  QuizPara,
 } from "./Personality.elements";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import statements from "../../utils/statements";
@@ -183,13 +184,13 @@ const Personality = () => {
       case 0:
         return (
           <div>
-            <p>{currentContent.quote}</p>
+            <QuizPara>{currentContent.quote}</QuizPara>
           </div>
         );
       case 1:
         return (
           <div>
-            <p>{currentContent.spell}</p>
+            <QuizPara>{currentContent.spell}</QuizPara>
           </div>
         );
       case 2:

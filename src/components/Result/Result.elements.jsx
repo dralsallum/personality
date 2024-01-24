@@ -8,6 +8,21 @@ export const ResCon = styled.main`
 
   }
 `;
+
+export const ResuHe = styled.h3`
+  font-size: 1.4rem;
+
+  @media screen and (max-width: 768px) {
+  }
+`;
+export const ResuPara = styled.p`
+  font-size: 1.6rem;
+  color: #494949;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+`;
 export const ResHeader = styled.header`
   margin-bottom: -60px;
   background: #f6f6f7;

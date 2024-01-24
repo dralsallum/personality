@@ -62,6 +62,14 @@ export const QuizHe = styled.h3`
   @media screen and (max-width: 768px) {
   }
 `;
+export const QuizPara = styled.p`
+  font-size: 1.6rem;
+  color: #494949;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+`;
 
 export const IntroBod = styled.header`
   padding: 25px 30px;
@@ -127,7 +135,7 @@ export const RegistarButton = styled.button`
   height: 30px;
   border: none;
   margin-top: 5px;
-  background-color: #4198b4;
+  background-color: #886199;
   color: #fff;
   border-color: darkgray;
   cursor: pointer;
@@ -496,8 +504,7 @@ export const ResDot = styled.div`
 export const ResOpBut = styled.div`
   margin-bottom: 0;
   color: #fff;
-  background-color: #4298b4;
-  border-color: #4298b4;
+  background-color: #886199;
   border-radius: 40px;
   font-size: 1rem;
   height: 50px;
