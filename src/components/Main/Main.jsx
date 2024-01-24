@@ -9,6 +9,7 @@ import {
   MaImag,
 } from "./Main.elements";
 import { Link } from "react-router-dom";
+import Real from "../../assets/real.png";
 
 const Main = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,11 +46,9 @@ const Main = () => {
           </MaSubTwo>
         </MaConTwo>
       </MaWrapper>
-
-      <MaImag
-        src="https://www.16personalities.com/static/images/homepage/header-mountains-mobile.svg"
-        alt=""
-      />
+      <MaWrapper>
+        <MaImag src={Real} alt="" />
+      </MaWrapper>
     </>
   );
 };

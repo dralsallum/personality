@@ -9,7 +9,7 @@ export const Button = styled.button`
   outline: none;
   cursor: pointer;
   width: 70%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   &:hover {
     transition: all 0.3s ease-out;
@@ -27,11 +27,14 @@ export const MaWrapper = styled.div`
   position: relative;
   border: none;
   outline: none;
-  margin-bottom: -1px;
+  margin: -1px;
+
   @media screen and (max-width: 768px) {
   }
 `;
 export const MaImag = styled.img`
+  width: 100%;
+
   position: relative;
   margin: 0;
   padding: 0;
@@ -44,11 +47,11 @@ export const MaConTwo = styled.div`
   height: 100%;
   position: relative;
   width: 100%;
-  padding: 55px 60px 0px;
+  padding: 35px 60px 0px;
 
   @media screen and (max-width: 768px) {
     max-width: 100%;
-    padding: 35px 25px 0px;
+    padding: 25px 25px 0px;
   }
 `;
 export const MaSubTwo = styled.div`
@@ -89,7 +92,6 @@ export const MaInput = styled.input`
   text-align: right;
   width: 100%;
   overflow: visible;
-  margin: 0;
   border: none;
   outline: none;
 
