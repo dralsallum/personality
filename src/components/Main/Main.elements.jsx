@@ -68,7 +68,7 @@ export const MaHe = styled.h1`
   font-size: 3.2rem;
 
   @media screen and (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 `;
 export const MaPara = styled.p`
@@ -78,7 +78,7 @@ export const MaPara = styled.p`
   margin-bottom: 14px;
 
   @media screen and (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 `;
 
