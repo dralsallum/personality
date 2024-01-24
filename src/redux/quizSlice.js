@@ -4,7 +4,7 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState: {
     results: null,
-    resultText: "", // Add this line to store result text
+    resultText: "",
   },
   reducers: {
     setQuizResults: (state, action) => {

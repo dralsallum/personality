@@ -1,5 +1,24 @@
 import styled, { keyframes } from "styled-components";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const StyledSpinner = styled(FontAwesomeIcon)`
+  animation: ${rotate} 1s linear infinite;
+  color: blue;
+  height: 34px;
+  width: 50px;
+  padding: 30px;
+`;
+
 const loadingAnimation = keyframes`
   0% { width: 0%; }
   100% { width: 100%; }
@@ -33,6 +52,12 @@ export const QuizBody = styled.div`
   display: flex;
   justify-content: center;
   font-size: 1.5rem;
+
+  @media screen and (max-width: 768px) {
+  }
+`;
+export const QuizHe = styled.h3`
+  font-size: 1.4rem;
 
   @media screen and (max-width: 768px) {
   }

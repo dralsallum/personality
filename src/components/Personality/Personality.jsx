@@ -50,6 +50,7 @@ import {
   StyledSpinner,
   Loading,
   LoadingBar,
+  QuizHe,
 } from "./Personality.elements";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import statements from "../../utils/statements";
@@ -67,8 +68,8 @@ import charact7 from "../../assets/character7.png";
 import charact8 from "../../assets/character8.png";
 import charact9 from "../../assets/character9.png";
 import charact10 from "../../assets/character10.png";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/userRedux";
 import { setQuizResults, setResultText } from "../../redux/quizSlice";
 
@@ -82,6 +83,7 @@ const Personality = () => {
   const [resultPage, setResultPage] = useState(0);
   const [inputs, setInputs] = useState({});
   const [isRegistering, setIsRegistering] = useState(false);
+  const currentTeam = useSelector((state) => state.quiz.resultText.team);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -98,48 +100,79 @@ const Personality = () => {
 
     const quotesAndSpells = {
       range1: {
-        quote: "Quote for range 1",
-        spell: "Spell for range 1",
+        team: "المنطقي",
+        quote:
+          "عملي ومحب للحقائق. يتميز بالثبات والموثوقية، ويقدر النزاهة والمسؤولية. يجيد التخطيط وتنظيم المهام بكفاءة",
+        spell:
+          "يقدر التعامل العقلاني والمنظم، ويفضل النقاشات المبنية على الحقائق والواقعية. يحب الأشخاص الذين يظهرون الصدق والموثوقية ويكرهون التسرع والتهور في القرارات. يفضلون التخطيط المسبق وتقدير الجهود التي يبذلونها",
       },
       range2: {
-        quote: "Quote for range 2",
-        spell: "Spell for range 2",
+        team: "المدافع",
+        quote:
+          " مكرس ودافئ، ويبرز في الدفاع عن أحبائه. يتمتع بالتفاني والدعم، ويسعى دائمًا لحماية ورعاية من حوله",
+        spell:
+          "يحب التعامل الذي يتسم بالتعاطف والرعاية، ويقدر الأشخاص الذين يظهرون الاهتمام والدعم. يرغب في التقدير لجهوده والتقدير لحساسيته تجاه الآخرين. يفضل التواصل الهادئ والمتفهم",
       },
       range3: {
-        quote: "Quote for range 3",
-        spell: "Spell for range 3",
+        team: "البارع",
+        quote:
+          "جريء وعملي، متقن لجميع أنواع الأدوات. يتميز بالمرونة والقدرة على التكيف مع المواقف المختلفة بسهولة",
+        spell:
+          "يحب التعامل العملي والمباشر، ويقدر الأشخاص الذين يعتمدون على الخبرة والمهارة. يستمتع بالتحديات الجديدة ويفضل العمل مع أشخاص مبتكرين ومرنين",
       },
       range4: {
-        quote: "Quote for range 4",
-        spell: "Spell for range 4",
+        team: "المغامر",
+        quote:
+          "فنان مرن وساحر. يتمتع بحب الاستكشاف والتجارب الجديدة، ويجد السعادة في الأشياء الجميلة من حوله",
+        spell:
+          " يفضل التعامل الذي يحفز الإبداع والاستكشاف. يحب الأشخاص الذين يشاركونه حب المغامرة والاستكشاف. يقدر الحرية والتلقائية في التعبير عن الذات",
       },
       range5: {
-        quote: "Quote for range 5",
-        spell: "Spell for range 5",
+        team: "الوسيط",
+        quote:
+          "شاعري ولطيف ومحب للخير. يتحلى بالإخلاص والتعاطف، ودائمًا ما يكون مستعدًا لمساعدة القضايا النبيلة والمجتمع",
+        spell:
+          "يقدر التعامل اللطيف والداعم. يحب الأشخاص الذين يقدرون الإبداع والتعاطف. يستمتع بالعمل في بيئات تشجع على التعاون والتفاهم",
       },
       range6: {
-        quote: "Quote for range 6",
-        spell: "Spell for range 6",
+        team: "المنطقي",
+        quote:
+          "مبتكر ومخترع، لديه عطش لا ينتهي للمعرفة. يبرز في التفكير النقدي والإبداعي، ويميل إلى التفكير خارج الصندوق",
+        spell:
+          "يفضل التعامل الذي يشجع على الابتكار والمعرفة. يقدر النقاشات الفكرية ويحب الأشخاص الذين يتحدونه فكرياً. يستمتع بالتعلم والاكتشاف المستمر",
       },
       range7: {
-        quote: "Quote for range 7",
-        spell: "Spell for range 7",
+        team: "المناظر",
+        quote:
+          "فضولي وذكي، لا يمكنه مقاومة التحدي الفكري. يتمتع بقدرة عالية على التحليل والمناقشة، ويحب استكشاف الأفكار الجديدة",
+        spell:
+          "يفضل التعامل الذي يتحدى فكرياً ويحفز العقل. يحب الأشخاص الذين يقدرون النقاش العميق وتبادل الأفكار. يتجنب الأشخاص الذين لا يحبون التفكير خارج الصندوق",
       },
       range8: {
-        quote: "Quote for range 8",
-        spell: "Spell for range 8",
+        team: "التنفيذي",
+        quote:
+          "مدير ممتاز، يتفوق في إدارة الأمور والأشخاص. يتميز بقوة القيادة والكفاءة الإدارية، ويتخذ القرارات بثقة",
+        spell:
+          " يفضل التعامل الفعال والمنظم. يقدر الالتزام والكفاءة والجدية في العمل. يحب الأشخاص الذين يظهرون الاحترام والتقدير لمهاراته الإدارية",
       },
       range9: {
-        quote: "Quote for range 9",
-        spell: "Spell for range 9",
+        team: "البطل",
+        quote:
+          "قائد كاريزماتي وملهم. يتمتع بقدرة فائقة على التأثير وإلهام الآخرين، ويحب قيادة المبادرات الإيجابية",
+        spell:
+          " يفضل التعامل الذي يتضمن التحفيز والإلهام. يقدر الأشخاص الذين يدعمونه ويقدرون قدرته على التأثير والقيادة. يستمتع بالعمل مع أشخاص يشاركونه الحماس للتغيير الإيجابي",
       },
       range10: {
-        quote: "Quote for range 10",
-        spell: "Spell for range 10",
+        team: "القائد",
+        quote:
+          "جريء وخيالي وذو إرادة قوية. يبرز في القيادة وصنع الطرق الجديدة، ويتمتع بالعزم والإصرار على تحقيق الأهداف",
+        spell:
+          "يفضل التعامل الحازم والمباشر. يقدر الأشخاص الذين يظهرون الصراحة والاحترام لقيادته وقراراته. يحب العمل مع أشخاص يتمتعون بالعزم والإصرار على تحقيق الأهداف",
       },
     };
 
     const currentContent = quotesAndSpells[scoreDetails.category] || {
+      team: "Default team if score doesn't match any range",
       quote: "Default quote if score doesn't match any range",
       spell: "Default spell if score doesn't match any range",
     };
@@ -151,14 +184,12 @@ const Personality = () => {
         return (
           <div>
             <p>{currentContent.quote}</p>
-            <p>Your email: user@example.com</p>
           </div>
         );
       case 1:
         return (
           <div>
             <p>{currentContent.spell}</p>
-            <p>Your email: user@example.com</p>
           </div>
         );
       case 2:
@@ -375,7 +406,11 @@ const Personality = () => {
                     <ResSubTit>{getPersonalityType()}</ResSubTit>
                     <ResTyCon>
                       <ResTySp></ResTySp>
-                      اي تي م - الف
+                      {currentTeam ? (
+                        <QuizHe>{currentTeam}</QuizHe>
+                      ) : (
+                        <StyledSpinner />
+                      )}
                     </ResTyCon>
                     <ResMid>
                       <ResImg src={scoreDetails.svg} alt="score indicator" />
