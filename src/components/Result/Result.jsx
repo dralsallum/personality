@@ -192,7 +192,7 @@ const Result = () => {
                             onClick={() => setResultPage(index)}
                             style={{
                               backgroundColor:
-                                resultPage === index ? "#4298b4" : "#ccc",
+                                resultPage === index ? "#886199" : "#ccc",
                               cursor: "pointer",
                             }}
                           />
