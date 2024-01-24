@@ -27,7 +27,7 @@ export const MaWrapper = styled.div`
   position: relative;
   border: none;
   outline: none;
-  margin: -1px;
+  margin-bottom: -1px;
 
   @media screen and (max-width: 768px) {
   }
@@ -66,20 +66,20 @@ export const MaSubTwo = styled.div`
 export const MaHe = styled.h1`
   color: #ffffff;
   font-family: Raleway Medium;
-  font-size: 42px;
+  font-size: 3.2rem;
 
   @media screen and (max-width: 768px) {
-    font-size: 35px;
+    font-size: 2rem;
   }
 `;
 export const MaPara = styled.p`
   color: #ffffff;
   font-family: Raleway Medium;
-  font-size: 22px;
+  font-size: 1.8rem;
   margin-bottom: 14px;
 
   @media screen and (max-width: 768px) {
-    font-size: 22px;
+    font-size: 1.3rem;
   }
 `;
 
