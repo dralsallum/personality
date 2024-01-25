@@ -56,29 +56,26 @@ const NavTech = () => {
         <NotCon>
           <NotUl>
             <NotBot>
-              <NotBotAt to={"/upload"}>توظيف</NotBotAt>
+              <NotBotAt to={"/signup"}>سجل الدخول</NotBotAt>
             </NotBot>
             <NotBot>
-              <NotBotAt to={"/upload"}>البحث عن وظيفة</NotBotAt>
+              <NotBotAt to={"/personality"}>اختبارنا</NotBotAt>
             </NotBot>
             <hr />
             <NotBot>
-              <NotBotAt to={"/product/nurse"}>التمريض</NotBotAt>
+              <NotBotAt to={"/"}>الاطباء</NotBotAt>
             </NotBot>
             <NotBot>
-              <NotBotAt to={"/product/physician"}>الاطباء</NotBotAt>
+              <NotBotAt to={"/"}>السوشل ميديا</NotBotAt>
             </NotBot>
             <NotBot>
-              <NotBotAt to={"/product/dentist"}>اسنان</NotBotAt>
+              <NotBotAt to={"/"}>الشروط والاحكام</NotBotAt>
             </NotBot>
             <NotBot>
-              <NotBotAt to={"/product/technician"}>فني</NotBotAt>
+              <NotBotAt to={"/"}>تواصل معنا</NotBotAt>
             </NotBot>
             <NotBot>
-              <NotBotAt to={"/product/reception"}>استقبال</NotBotAt>
-            </NotBot>
-            <NotBot>
-              <NotBotAt to={"/product/management"}>ادارة</NotBotAt>
+              <NotBotAt to={"/"}>من نحن</NotBotAt>
             </NotBot>
             <hr style={{ marginBottom: "6px" }} />
             <NotBot>
@@ -123,8 +120,8 @@ const NavTech = () => {
                 </NavrightSec>
               </Link>
               <NavrightSeventh>
-                <Link to={"/upload"}>
-                  <Button>قدم الان</Button>
+                <Link to={"/personality"}>
+                  <Button>ابدا الان</Button>
                 </Link>
               </NavrightSeventh>
               <NavrightEighth></NavrightEighth>
