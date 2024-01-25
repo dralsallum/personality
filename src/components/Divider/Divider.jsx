@@ -9,7 +9,7 @@ import {
   ArSubContainerF,
   ArWrapper,
 } from "./Divider.elements";
-import couple from "../../assets/tten.png";
+import Study from "../../assets/study.svg";
 
 const Divider = () => {
   return (
@@ -24,7 +24,7 @@ const Divider = () => {
         </ArSubContainerF>
       </ArContainerF>
       <ArContainerS>
-        <ArContainerSImg src={couple} />
+        <ArContainerSImg src={Study} />
       </ArContainerS>
     </ArWrapper>
   );

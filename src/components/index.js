@@ -7,5 +7,6 @@ export { default as Resume } from "./Resume/Resume";
 export { default as Options } from "./Options/Options";
 export { default as SignForm } from "./SignForm/SignForm";
 export { default as Divider } from "./Divider/Divider";
+export { default as Article } from "./Article/Article";
 export { default as Products } from "./Products/Products";
 export { default as Personality } from "./Personality/Personality";

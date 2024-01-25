@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import { Divider, Footer, Main, NavTech, Options } from "../components";
+import {
+  Article,
+  Divider,
+  Footer,
+  Main,
+  NavTech,
+  Options,
+} from "../components";
 
 const Home = () => {
   useEffect(() => {
@@ -11,6 +18,7 @@ const Home = () => {
       <Main />
       <Options />
       <Divider />
+      <Article />
       <Footer />
     </>
   );

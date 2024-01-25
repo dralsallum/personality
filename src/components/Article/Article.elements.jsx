@@ -14,13 +14,17 @@ export const ArWrapper = styled.div`
   }
 `;
 export const ArContainerF = styled.div`
-  order: 1;
+  order: 2;
   flex: 1;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 768px) {
     max-width: 100%;
+    order: 1;
   }
 `;
 export const ArSubContainerF = styled.div`
+  color: #886199;
+`;
+export const ArSubConPa = styled.div`
   color: #252b2f;
 `;
 export const ArContainerFCon = styled.div`
@@ -32,12 +36,11 @@ export const ArContainerFCon = styled.div`
   margin-bottom: 1rem;
 `;
 export const ArContainerFHe = styled.h3`
-  font-size: 1.7rem;
+  font-size: 1.725rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #886199;
-  @media screen and (max-width: 768px) {
-    font-size: 1.5rem;
+  @media screen and (max-width: 700px) {
+    font-size: 1.125rem;
     line-height: 1.625rem;
   }
 `;
@@ -45,11 +48,12 @@ export const ArContainerFPara = styled.p`
   margin-bottom: 1.5rem;
 `;
 export const ArContainerS = styled.div`
-  order: 2;
+  order: 1;
   flex: 1;
   @media screen and (max-width: 768px) {
     max-width: 350px;
     margin-bottom: 1.5rem;
+    order: 2;
   }
 `;
 export const ArContainerSImg = styled.img`
