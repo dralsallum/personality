@@ -22,6 +22,7 @@ export const ArContainerF = styled.div`
 `;
 export const ArSubContainerF = styled.div`
   color: #252b2f;
+  font-size: 1.1rem;
 `;
 export const ArContainerFCon = styled.div`
   text-transform: uppercase;
@@ -32,12 +33,12 @@ export const ArContainerFCon = styled.div`
   margin-bottom: 1rem;
 `;
 export const ArContainerFHe = styled.h3`
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 1rem;
   color: #886199;
   @media screen and (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 1.625rem;
   }
 `;
