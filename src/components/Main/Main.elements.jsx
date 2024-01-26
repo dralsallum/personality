@@ -33,12 +33,17 @@ export const MaWrapper = styled.div`
   }
 `;
 export const MaImag = styled.img`
+  height: 500px;
   width: 100%;
   position: relative;
   margin: 0;
   padding: 0;
   border: none;
   outline: none;
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
 `;
 
 export const MaConTwo = styled.div`
