@@ -6,6 +6,7 @@ import {
   Main,
   NavTech,
   Options,
+  Spin,
 } from "../components";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
       <NavTech />
       <Main />
       <Options />
+      <Spin />
       <Divider />
       <Article />
       <Footer />
