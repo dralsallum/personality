@@ -29,7 +29,7 @@ export const SpinWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     position: absolute;
-    top: 228px;
+    top: 180px;
     left: 27px;
     width: 350px;
     height: 480px;
