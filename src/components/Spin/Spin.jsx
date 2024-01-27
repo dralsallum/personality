@@ -164,12 +164,12 @@ const Spin = () => {
     <SpinWrapper show={showSpinWrapper}>
       <SpinWra></SpinWra>
       <SpinCon>
-        <SpinCross>
+        <SpinCross onClick={handleResButClick}>
           <SpinCro>
             <SpOn>
               <SpTw>
                 <SpinSpTw>
-                  <SpinSpOn onClick={handleResButClick}>x</SpinSpOn>
+                  <SpinSpOn>x</SpinSpOn>
                 </SpinSpTw>
               </SpTw>
             </SpOn>
@@ -334,7 +334,7 @@ const Spin = () => {
                 <ReSp>
                   <ReSpa>
                     <ReStr>Check your inbox for the code, and</ReStr>
-                    &nbsp;take that first step of&nbsp;your
+                    &nbsp;take <br /> that first step of&nbsp;your
                     <br />
                     wellness journey
                   </ReSpa>

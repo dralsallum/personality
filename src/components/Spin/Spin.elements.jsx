@@ -800,6 +800,8 @@ export const ResButWr = styled.div`
   visibility: ${(props) => (props.show ? "visible" : "hidden")};
 
   @media screen and (max-width: 768px) {
+    top: 205px;
+    left: 50px;
   }
 `;
 export const ResBut = styled.span`
@@ -856,6 +858,8 @@ export const ResWr = styled.div`
   transform: rotate(0deg) scaleX(1) scaleY(1);
 
   @media screen and (max-width: 768px) {
+    top: 18px;
+    left: 8px;
   }
 `;
 export const ResCo = styled.div`
@@ -882,6 +886,10 @@ export const ResCen = styled.div`
 `;
 export const ResSp = styled.span`
   font-size: 28px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 export const ResSpan = styled.span`
   text-align: center;
@@ -900,6 +908,10 @@ export const ReSp = styled.span`
   color: #fffdfa;
   font-family: Nexa, source sans pro, sans-serif;
   font-weight: 800;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 export const ReSpa = styled.span`
   text-align: center;
