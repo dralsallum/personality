@@ -5,8 +5,7 @@ const spin = keyframes`
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(${(props) =>
-      props.spinDegree + 360}deg); // One full spin plus random degree
+    transform: rotate(${(props) => props.spinDegree + 360}deg); 
   }
 `;
 
@@ -103,6 +102,8 @@ export const SpOn = styled.div`
   width: 40px;
 `;
 export const SpCon = styled.div`
+  display: ${(props) => (props.show ? "none" : "block")};
+  visibility: ${(props) => (props.show ? "hidden" : "visible")};
   position: absolute;
   top: 8px;
   left: 264px;
@@ -110,8 +111,6 @@ export const SpCon = styled.div`
   height: 170px;
   z-index: 50;
   transform: rotate(0deg) scaleX(1) scaleY(1);
-  display: block;
-  visibility: visible;
   font-weight: 400;
   font-family: helvetica neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -164,6 +163,8 @@ export const SpinB = styled.b`
   font-weight: 700;
 `;
 export const InputWr = styled.div`
+  display: ${(props) => (props.show ? "none" : "block")};
+  visibility: ${(props) => (props.show ? "hidden" : "visible")};
   position: absolute;
   top: 177px;
   left: 255px;
@@ -171,8 +172,6 @@ export const InputWr = styled.div`
   height: 36px;
   z-index: 63;
   transform: rotate(0deg) scaleX(1) scaleY(1);
-  display: block;
-  visibility: visible;
   font-weight: 400;
   font-family: helvetica neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -197,6 +196,8 @@ export const Inp = styled.input`
 `;
 
 export const ButCon = styled.div`
+  display: ${(props) => (props.show ? "none" : "block")};
+  visibility: ${(props) => (props.show ? "hidden" : "visible")};
   position: absolute;
   top: 221px;
   left: 255px;
@@ -204,8 +205,6 @@ export const ButCon = styled.div`
   height: 36px;
   z-index: 62;
   transform: rotate(0deg) scaleX(1) scaleY(1);
-  display: block;
-  visibility: visible;
   cursor: pointer;
   font-weight: 400;
   font-family: helvetica neue, Helvetica, Arial, sans-serif;
@@ -249,14 +248,14 @@ export const ButStr = styled.strong`
   font-weight: 700;
 `;
 export const MainWr = styled.div`
+  display: ${(props) => (props.show ? "none" : "block")};
+  visibility: ${(props) => (props.show ? "hidden" : "visible")};
   position: absolute;
   top: 6px;
   left: -82px;
   width: 329px;
   height: 339px;
   z-index: 61;
-  display: block;
-  visibility: visible;
   font-weight: 400;
   font-family: helvetica neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -674,4 +673,126 @@ export const MainNTw = styled.div`
   height: 15px;
   border-radius: 15px;
   background-color: #333;
+`;
+export const ResButWr = styled.div`
+  position: absolute;
+  top: 205px;
+  left: 163px;
+  width: 250px;
+  height: 36px;
+  z-index: 1;
+  font-weight: 400;
+  font-family: helvetica neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  color: #000;
+  cursor: pointer;
+  transform: rotate(0deg) scaleX(1) scaleY(1);
+  display: ${(props) => (props.show ? "block" : "none")};
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
+`;
+export const ResBut = styled.span`
+  font-family: Nexa, source sans pro, sans-serif;
+  text-align: center;
+  color: rgb(255, 255, 255);
+`;
+export const ResButStr = styled.strong`
+  font-weight: 700;
+`;
+export const ResButSp = styled.span`
+  font-size: 18px;
+`;
+export const ResButCe = styled.div`
+  text-align: center;
+`;
+export const ResButHe = styled.div`
+  display: table-cell;
+  vertical-align: middle;
+  height: 36px;
+  width: 250px;
+`;
+export const ResButMa = styled.div`
+  opacity: 1;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+  border-width: 0px;
+  border-color: #000;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(239, 119, 91, 1);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
+`;
+export const ResWr = styled.div`
+  display: ${(props) => (props.show ? "block" : "none")};
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
+  font-weight: 400;
+  font-family: helvetica neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  color: #000;
+  position: absolute;
+  top: 18px;
+  left: 118px;
+  width: 344px;
+  height: 187px;
+  z-index: 50;
+  transform: rotate(0deg) scaleX(1) scaleY(1);
+`;
+export const ResCo = styled.div`
+  opacity: 1;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+  border-width: 0px;
+  border-color: #000;
+  background-color: rgba(255, 255, 255, 0);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+`;
+export const ResSuCo = styled.div`
+  height: 187px;
+  width: 344px;
+  display: table-cell;
+  vertical-align: middle;
+`;
+export const ResCen = styled.div`
+  text-align: center;
+`;
+export const ResSp = styled.span`
+  font-size: 28px;
+`;
+export const ResSpan = styled.span`
+  text-align: center;
+  letter-spacing: 1px;
+  color: #fffdfa;
+  font-family: Nexa, source sans pro, sans-serif;
+  font-weight: 800;
+`;
+export const ResStr = styled.strong`
+  font-weight: 700;
+`;
+export const ReSp = styled.span`
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #fffdfa;
+  font-family: Nexa, source sans pro, sans-serif;
+  font-weight: 800;
+`;
+export const ReSpa = styled.span`
+  text-align: center;
+  letter-spacing: 1px;
+  color: #fffdfa;
+  font-family: Nexa, source sans pro, sans-serif;
+`;
+export const ReStr = styled.strong`
+  font-weight: 700;
 `;

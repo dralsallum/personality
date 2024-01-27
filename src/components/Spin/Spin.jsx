@@ -53,6 +53,23 @@ import {
   MainNiTw,
   MainSubCon,
   MainWr,
+  ReSp,
+  ReSpa,
+  ReStr,
+  ResBut,
+  ResButCe,
+  ResButHe,
+  ResButMa,
+  ResButSp,
+  ResButStr,
+  ResButWr,
+  ResCen,
+  ResCo,
+  ResSp,
+  ResSpan,
+  ResStr,
+  ResSuCo,
+  ResWr,
   SpAli,
   SpCon,
   SpOn,
@@ -73,32 +90,64 @@ import {
   SpinWrapper,
 } from "./Spin.elements";
 
-const getRandomSpinDegree = () => {
-  // Assuming each section is 30 degrees and there are 12 sections
-  const sectionDegree = 360 / 12;
-  const randomSection = Math.floor(Math.random() * 12);
-  // Adding a bit randomness to stop within the section
-  const degreeWithinSection = Math.random() * sectionDegree;
-  return randomSection * sectionDegree + degreeWithinSection;
-};
-
 const Spin = () => {
   const [email, setEmail] = useState("");
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinDegree, setSpinDegree] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [resultMessage, setResultMessage] = useState("");
+
+  const getRandomSpinDegree = () => {
+    const sectionDegree = 360 / 12;
+    const randomSection = Math.floor(Math.random() * 12);
+    const degreeWithinSection = Math.random() * sectionDegree;
+    const totalDegree = randomSection * sectionDegree + degreeWithinSection;
+
+    console.log("Random spin degree: ", totalDegree);
+    return totalDegree;
+  };
+
+  const getResultFromDegree = (degree) => {
+    const sectionDegree = 360 / 12;
+    const adjustedDegree = (degree + 360) % 360;
+    let sectionIndex = Math.floor(adjustedDegree / sectionDegree);
+    sectionIndex = (sectionIndex + 3) % 12;
+
+    const prizes = [
+      "$15 OFF", // Segment 1
+      "15% OFF", // Segment 2
+      "10% OFF", // Segment 3
+      "15% OFF", // Segment 4
+      "$15 OFF", // Segment 5
+      "Try again", // Segment 6
+      "10% OFF", // Segment 7
+      "15% OFF", // Segment 8
+      "20% OFF", // Segment 9
+      "10% OFF", // Segment 10
+      "Try again", // Segment 11
+      "15% OFF", // Segment 12
+    ];
+    return prizes[sectionIndex];
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
   const handleSubmit = () => {
-    // Your submit logic...
-    const newSpinDegree = getRandomSpinDegree();
-    setSpinDegree(newSpinDegree); // Set the random degree
-    setIsSpinning(true); // Start spinning
+    setShowResult(false); // Ensure the result is not shown when starting the spin
 
-    // Stop spinning after 2 seconds
-    setTimeout(() => setIsSpinning(false), 1000);
+    const newSpinDegree = getRandomSpinDegree();
+    setSpinDegree(newSpinDegree);
+    setIsSpinning(true);
+
+    // Wait for spin to complete before showing result
+    setTimeout(() => {
+      setIsSpinning(false);
+      const prize = getResultFromDegree(newSpinDegree);
+      setResultMessage(prize); // Update the result message based on the prize
+      setShowResult(true); // Show the result
+    }, 3000); // Duration of spin animation
   };
 
   return (
@@ -118,7 +167,7 @@ const Spin = () => {
         </SpinCross>
         <div></div>
         <div></div>
-        <MainWr>
+        <MainWr show={showResult}>
           <MainCon>
             <MainSubCon>
               <MainImg>
@@ -217,7 +266,7 @@ const Spin = () => {
             </MainSubCon>
           </MainCon>
         </MainWr>
-        <ButCon>
+        <ButCon show={showResult}>
           <ButSubCon>
             <ButWr>
               <ButCen>
@@ -230,7 +279,7 @@ const Spin = () => {
             </ButWr>
           </ButSubCon>
         </ButCon>
-        <InputWr>
+        <InputWr show={showResult}>
           <Inp
             type="text"
             placeholder="Email Address"
@@ -238,7 +287,7 @@ const Spin = () => {
             onChange={handleEmailChange}
           />
         </InputWr>
-        <SpCon>
+        <SpCon show={showResult}>
           <SpSubCon>
             <SpVe>
               <SpAli>
@@ -258,8 +307,42 @@ const Spin = () => {
             </SpVe>
           </SpSubCon>
         </SpCon>
-        <div></div>
-        <div></div>
+        <ResWr show={showResult}>
+          <ResCo>
+            <ResSuCo>
+              <ResCen>
+                <ResSp>
+                  <ResSpan>
+                    <ResStr>You won {resultMessage}!!</ResStr>
+                  </ResSpan>
+                </ResSp>
+                <br />
+                <br />
+                <ReSp>
+                  <ReSpa>
+                    <ReStr>Check your inbox for the code, and</ReStr>
+                    &nbsp;take that first step of&nbsp;your
+                    <br />
+                    wellness journey
+                  </ReSpa>
+                </ReSp>
+              </ResCen>
+            </ResSuCo>
+          </ResCo>
+        </ResWr>
+        <ResButWr show={showResult}>
+          <ResButMa>
+            <ResButHe>
+              <ResButCe>
+                <ResButSp>
+                  <ResButStr>
+                    <ResBut>Close</ResBut>
+                  </ResButStr>
+                </ResButSp>
+              </ResButCe>
+            </ResButHe>
+          </ResButMa>
+        </ResButWr>
       </SpinCon>
     </SpinWrapper>
   );
