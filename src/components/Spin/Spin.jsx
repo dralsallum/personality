@@ -88,6 +88,7 @@ import {
   SpinSubSpan,
   SpinWra,
   SpinWrapper,
+  WrongSp,
 } from "./Spin.elements";
 
 const Spin = () => {
@@ -96,6 +97,8 @@ const Spin = () => {
   const [spinDegree, setSpinDegree] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [resultMessage, setResultMessage] = useState("");
+  const [showSpinWrapper, setShowSpinWrapper] = useState(true);
+  const [emailError, setEmailError] = useState("");
 
   const getRandomSpinDegree = () => {
     const sectionDegree = 360 / 12;
@@ -135,13 +138,16 @@ const Spin = () => {
   };
 
   const handleSubmit = () => {
-    setShowResult(false); // Ensure the result is not shown when starting the spin
+    if (email.trim() === "") {
+      alert("Please enter your email address to spin the wheel.");
+      return;
+    }
+    setShowResult(false);
 
     const newSpinDegree = getRandomSpinDegree();
     setSpinDegree(newSpinDegree);
     setIsSpinning(true);
 
-    // Wait for spin to complete before showing result
     setTimeout(() => {
       setIsSpinning(false);
       const prize = getResultFromDegree(newSpinDegree);
@@ -150,8 +156,12 @@ const Spin = () => {
     }, 3000); // Duration of spin animation
   };
 
+  const handleResButClick = () => {
+    setShowSpinWrapper(false);
+  };
+
   return (
-    <SpinWrapper>
+    <SpinWrapper show={showSpinWrapper}>
       <SpinWra></SpinWra>
       <SpinCon>
         <SpinCross>
@@ -159,7 +169,7 @@ const Spin = () => {
             <SpOn>
               <SpTw>
                 <SpinSpTw>
-                  <SpinSpOn>x</SpinSpOn>
+                  <SpinSpOn onClick={handleResButClick}>x</SpinSpOn>
                 </SpinSpTw>
               </SpTw>
             </SpOn>
@@ -286,7 +296,9 @@ const Spin = () => {
             value={email}
             onChange={handleEmailChange}
           />
+          {emailError && <div style={{ color: "red" }}>{emailError}</div>}
         </InputWr>
+
         <SpCon show={showResult}>
           <SpSubCon>
             <SpVe>
@@ -300,6 +312,7 @@ const Spin = () => {
                       <SpinB>
                         Spin to unlock an exclusive offer on your first order.
                       </SpinB>
+                      <WrongSp></WrongSp>
                     </SpinSpa>
                   </SpinSubSpan>
                 </SpinSpan>
@@ -331,7 +344,7 @@ const Spin = () => {
           </ResCo>
         </ResWr>
         <ResButWr show={showResult}>
-          <ResButMa>
+          <ResButMa onClick={handleResButClick}>
             <ResButHe>
               <ResButCe>
                 <ResButSp>

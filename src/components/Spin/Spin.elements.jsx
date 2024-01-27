@@ -11,6 +11,8 @@ const spin = keyframes`
 
 //put it 10px top after finishing
 export const SpinWrapper = styled.div`
+  display: ${(props) => (props.show ? "block" : "none")};
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
   position: absolute;
   bottom: 20px;
   left: 0px;
@@ -18,14 +20,25 @@ export const SpinWrapper = styled.div`
   height: 289px;
   z-index: 5;
   transform: scale(1) rotateZ(0deg);
-  display: block;
-  visibility: visible;
   opacity: 1;
   font-weight: 400;
   font-family: helvetica neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: normal;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    top: 268.5px;
+    left: 47px;
+    width: 350px;
+    height: 480px;
+    z-index: 5;
+    transform: scale(1) rotateZ(0deg);
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 export const SpinWra = styled.div`
   opacity: 1;
@@ -41,6 +54,19 @@ export const SpinWra = styled.div`
   background-size: 100% 100%;
   height: 100%;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+    opacity: 1;
+    border-style: solid;
+    padding: 0px;
+    border-radius: 0px;
+    border-width: 0px;
+    border-color: rgba(222, 222, 222, 1);
+    background-color: rgba(0, 115, 119, 1);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+  }
 `;
 export const SpinCon = styled.div`
   width: 578px;
@@ -50,6 +76,16 @@ export const SpinCon = styled.div`
   height: 100%;
   cursor: default;
   z-index: 3;
+
+  @media screen and (max-width: 768px) {
+    width: 296px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    cursor: default;
+    z-index: 3;
+  }
 `;
 export const SpinCross = styled.div`
   position: absolute;
@@ -67,6 +103,24 @@ export const SpinCross = styled.div`
   font-size: 14px;
   line-height: normal;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    top: -5px;
+    left: 315px;
+    width: 40px;
+    height: 40px;
+    z-index: 57;
+    cursor: pointer;
+    font-weight: 400;
+    font-family: helvetica neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: normal;
+    color: #000;
+    transform: rotate(0deg) scaleX(1) scaleY(1);
+    display: block;
+    visibility: visible;
+  }
 `;
 export const SpinCro = styled.div`
   opacity: 1;
@@ -82,24 +136,36 @@ export const SpinCro = styled.div`
   background-size: 100%;
   height: 100%;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const SpinSpOn = styled.span`
   text-align: center;
   letter-spacing: 1px;
   color: #fffdfa;
   font-family: "Nexa", Arial, san-serif;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const SpinSpTw = styled.span`
   font-size: 16px;
 `;
 export const SpTw = styled.div`
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const SpOn = styled.div`
   display: table-cell;
   vertical-align: middle;
   height: 40px;
   width: 40px;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const SpCon = styled.div`
   display: ${(props) => (props.show ? "none" : "block")};
@@ -116,6 +182,11 @@ export const SpCon = styled.div`
   font-size: 14px;
   line-height: normal;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    top: -35px;
+    left: 58px;
+  }
 `;
 export const SpSubCon = styled.div`
   opacity: 1;
@@ -131,12 +202,18 @@ export const SpSubCon = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const SpVe = styled.div`
   display: table-cell;
   vertical-align: middle;
   height: 170px;
   width: 233px;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const SpAli = styled.div`
   text-align: center;
@@ -155,9 +232,25 @@ export const SpinSubSpan = styled.span`
 `;
 export const SpinSp = styled.span`
   font-size: 24px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 export const SpinSpa = styled.span`
   font-size: 16px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+  }
+`;
+export const WrongSp = styled.span`
+  font-size: 16px;
+  color: red;
+
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 export const SpinB = styled.b`
   font-weight: 700;
@@ -177,6 +270,11 @@ export const InputWr = styled.div`
   font-size: 14px;
   line-height: normal;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    top: 150px;
+    left: 50px;
+  }
 `;
 export const Inp = styled.input`
   opacity: 1;
@@ -211,6 +309,11 @@ export const ButCon = styled.div`
   font-size: 14px;
   line-height: normal;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    top: 105px;
+    left: 51px;
+  }
 `;
 export const ButSubCon = styled.div`
   opacity: 1;
@@ -261,6 +364,11 @@ export const MainWr = styled.div`
   font-size: 14px;
   line-height: normal;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    top: 195px;
+    left: 40px;
+  }
 `;
 export const MainCon = styled.div`
   opacity: 1;
@@ -690,6 +798,9 @@ export const ResButWr = styled.div`
   transform: rotate(0deg) scaleX(1) scaleY(1);
   display: ${(props) => (props.show ? "block" : "none")};
   visibility: ${(props) => (props.show ? "visible" : "hidden")};
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const ResBut = styled.span`
   font-family: Nexa, source sans pro, sans-serif;
@@ -743,6 +854,9 @@ export const ResWr = styled.div`
   height: 187px;
   z-index: 50;
   transform: rotate(0deg) scaleX(1) scaleY(1);
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 export const ResCo = styled.div`
   opacity: 1;
