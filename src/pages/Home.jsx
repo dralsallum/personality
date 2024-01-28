@@ -18,7 +18,6 @@ const Home = () => {
       <NavTech />
       <Main />
       <Options />
-      <Spin />
       <Divider />
       <Article />
       <Footer />
