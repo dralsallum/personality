@@ -13,7 +13,7 @@ const slides = [
   {
     text: "استفد من خدماتنا المصممة لمساعدتك على تحسين فهمك لشخصيتك وتطوير ذاتك. من خلال أدواتنا التفاعلية والإرشادات الشخصية، نوجهك لاكتشاف طرق جديدة لتحقيق التوازن والرضا في حياتك",
     audioSrc:
-      "https://alsallum.s3.eu-north-1.amazonaws.com/ElevenLabs+three.mp3",
+      "https://alsallum.s3.eu-north-1.amazonaws.com/ElevenLabs+third.mp3",
     label: "تعرف على خدماتنا: في ٣٠ - ٦٠ ثانية",
   },
   {
