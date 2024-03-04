@@ -1,5 +1,6 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
 import {
@@ -17,30 +18,26 @@ import {
   SliderArrowButtonLeft,
   SliderArrowContainerAll,
   SliderArrowContainer1,
-} from "./Slider.elements";
+} from "./SecSlider.elements";
 import { sliderSettings } from "../../utils/common";
-import data from "../../utils/slider.json";
+import data from "../../utils/SecSlider.json";
 
-const Beyond =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/Beyond+the+clock.jpg";
-const Behind =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/Behind+grey+eye.jpg";
-const Whispers =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/Whispers+in+the+Rails.jpg";
-const Friends =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/friends+forever.jpg";
+const Dystopian = "https://alsallum.s3.eu-north-1.amazonaws.com/Dystopian.jpg";
+const Forgotten = "https://alsallum.s3.eu-north-1.amazonaws.com/forgetten.jpg";
+const Shadows = "https://alsallum.s3.eu-north-1.amazonaws.com/shadows.jpg";
+const Winds = "https://alsallum.s3.eu-north-1.amazonaws.com/winds.jpg";
 
 const imageMapping = {
-  "Whispers in the Rails": Whispers,
-  "Friends Forever": Friends,
-  "Behind Grey Eyes": Behind,
-  "Beyond the clock": Beyond,
+  "Shadows Over Maplewood": Shadows,
+  "Winds of change": Winds,
+  "The Forgotten Realms": Forgotten,
+  "A Dystopian future": Dystopian,
 };
 
 const SliderButton = ({ swiper }) => {
   return (
     <SliderArrowContainerAll>
-      <SliderArrowContainer1>كتب انجليزية للمبتدئاً</SliderArrowContainer1>
+      <SliderArrowContainer1>كتب انجليزية مستوى متوسط</SliderArrowContainer1>
       <SliderArrowContainer>
         <SliderArrowButtonLeft onClick={() => swiper && swiper.slidePrev()}>
           &lt;

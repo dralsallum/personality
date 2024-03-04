@@ -168,7 +168,7 @@ export const SliderCardSubSpan3 = styled.div`
   &:after {
     content: "...";
 
-    background-color: white; // Match this with your background color
+    background-color: white;
   }
 
   @media screen and (max-width: 960px) {
