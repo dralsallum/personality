@@ -59,7 +59,7 @@ const Slider = () => {
           textDecoration: "none",
           color: "inherit",
         }}
-        to={`/product/${encodeURIComponent(card.name)}`}
+        to={"https://www.google.com"}
       >
         <SliderCardContainer>
           <SliderCardImg src={imageMapping[card.name]} alt={card.name} />
@@ -70,7 +70,7 @@ const Slider = () => {
         </SliderCardContainer>
       </Link>
       <SliderCardSubSpan2>
-        <Link to={`/product/${encodeURIComponent(card.name)}`}>
+        <Link to={"https://www.google.com"}>
           <Button>اضافة للسلة</Button>
         </Link>
       </SliderCardSubSpan2>
