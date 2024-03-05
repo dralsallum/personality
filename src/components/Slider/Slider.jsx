@@ -21,16 +21,16 @@ import {
 import { sliderSettings } from "../../utils/common";
 import data from "../../utils/slider.json";
 
-const Beyond = "https://alsallum.s3.eu-north-1.amazonaws.com/Pink.jpg";
-const Behind = "https://alsallum.s3.eu-north-1.amazonaws.com/Red.jpg";
-const Whispers = "https://alsallum.s3.eu-north-1.amazonaws.com/White.jpg";
-const Friends = "https://alsallum.s3.eu-north-1.amazonaws.com/Blue.jpg";
+const Pink = "https://alsallum.s3.eu-north-1.amazonaws.com/Pink.jpg";
+const Red = "https://alsallum.s3.eu-north-1.amazonaws.com/Red.jpg";
+const White = "https://alsallum.s3.eu-north-1.amazonaws.com/White.jpg";
+const Blue = "https://alsallum.s3.eu-north-1.amazonaws.com/Blue.jpg";
 
 const imageMapping = {
-  "Whispers in the Rails": Whispers,
-  "Friends Forever": Friends,
-  "Behind Grey Eyes": Behind,
-  "Beyond the clock": Beyond,
+  White: White,
+  Blue: Blue,
+  Red: Red,
+  Pink: Pink,
 };
 
 const SliderButton = ({ swiper }) => {
