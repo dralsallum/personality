@@ -1,3 +1,4 @@
+import React from "react";
 import Home from "./pages/Home";
 import {
   BrowserRouter as Router,
@@ -13,9 +14,17 @@ import Something from "./pages/Something";
 import Policy from "./pages/Policy";
 import Personal from "./pages/personal";
 import Outcome from "./pages/Outcome";
+import ReactGA from "react-ga";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
+
+  React.useEffect(() => {
+    const googleTag = process.env.GOOGLE_TAG;
+    ReactGA.initialize(googleTag);
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <Router>
       <GlobalStyle />
