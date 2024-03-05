@@ -22,10 +22,10 @@ import {
 import { sliderSettings } from "../../utils/common";
 import data from "../../utils/SecSlider.json";
 
-const Dystopian = "https://alsallum.s3.eu-north-1.amazonaws.com/Dystopian.jpg";
-const Forgotten = "https://alsallum.s3.eu-north-1.amazonaws.com/forgetten.jpg";
-const Shadows = "https://alsallum.s3.eu-north-1.amazonaws.com/shadows.jpg";
-const Winds = "https://alsallum.s3.eu-north-1.amazonaws.com/winds.jpg";
+const Dystopian = "https://alsallum.s3.eu-north-1.amazonaws.com/GameOver.png";
+const Forgotten = "https://alsallum.s3.eu-north-1.amazonaws.com/TNT.jpg";
+const Shadows = "https://alsallum.s3.eu-north-1.amazonaws.com/Mario.jpg";
+const Winds = "https://alsallum.s3.eu-north-1.amazonaws.com/rick.png";
 
 const imageMapping = {
   "Shadows Over Maplewood": Shadows,
