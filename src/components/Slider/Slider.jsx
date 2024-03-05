@@ -21,14 +21,10 @@ import {
 import { sliderSettings } from "../../utils/common";
 import data from "../../utils/slider.json";
 
-const Beyond =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/Beyond+the+clock.jpg";
-const Behind =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/Behind+grey+eye.jpg";
-const Whispers =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/Whispers+in+the+Rails.jpg";
-const Friends =
-  "https://alsallum.s3.eu-north-1.amazonaws.com/friends+forever.jpg";
+const Beyond = "https://alsallum.s3.eu-north-1.amazonaws.com/Pink.jpg";
+const Behind = "https://alsallum.s3.eu-north-1.amazonaws.com/Red.jpg";
+const Whispers = "https://alsallum.s3.eu-north-1.amazonaws.com/White.jpg";
+const Friends = "https://alsallum.s3.eu-north-1.amazonaws.com/Blue.jpg";
 
 const imageMapping = {
   "Whispers in the Rails": Whispers,
